@@ -40,7 +40,7 @@ $twig->addExtension(new \TDE\TwigWebpackManifestExtension\WebpackExtension(
     <body>
         {# ... #}
         {% webpack_js 'vendor.js' %}
-        {% webpack_css 'app.js' %}
+        {% webpack_js 'app.js' %}
     </body>
 </html>
 ```
