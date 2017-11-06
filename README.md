@@ -28,6 +28,23 @@ $twig->addExtension(new \TDE\TwigWebpackManifestExtension\WebpackExtension(
 ));
 ```
 
+```twig
+{# base.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        {# ... #}
+        {% webpack_css 'app.css' %}
+    </head>
+
+    <body>
+        {# ... #}
+        {% webpack_js 'vendor.js' %}
+        {% webpack_css 'app.js' %}
+    </body>
+</html>
+```
+
 Maintainers
 -------
  - Jordi Kroon | [Github](https://github.com/jordikroon) | [Twitter](https://twitter.com/jordi12100)
