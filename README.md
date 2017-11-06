@@ -1,5 +1,4 @@
 # Twig Webpack manifest
-
 =========================
 
 ## Introduction
