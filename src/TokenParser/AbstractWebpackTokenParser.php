@@ -65,7 +65,7 @@ abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
 
         // Render the HTML required to include the entry.
         return new \Twig_Node_Text(
-            $this->render($this->publicPrefix . $manifest[$entryFile]),
+            $this->render($manifest[$entryFile]),
             $token->getLine()
         );
     }
