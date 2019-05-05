@@ -1,6 +1,6 @@
 <?php
 
-namespace TDE\TwigWebpackManifestExtension\TokenParser;
+namespace ByRobots\TwigWebpackManifestExtension\TokenParser;
 
 abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
 {

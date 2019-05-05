@@ -1,35 +1,40 @@
-Twig Webpack manifest
-=========================
+# Twig Webpack Manifest
 
 ## Introduction
 
-Injects CSS/JS in HTML templates, based on the generated Webpack manifest.json
+Injects the correct CSS and JS files from a manifest file into a Twig template.
 
-## Instalation
+Forked from [https://github.com/tdeNL/twig-webpack-manifest](tdeNL/twig-webpack-manifest)
+and modified to:
 
-The easiest way to install GTwig Webpack manifest is through [Composer](http://getcomposer.org).
+- support manifest files at a remote URL; this allows for Hot Module Replacement.
+
+## Installation
 
 ```bash
-composer require tde/twig-webpack-manifest
+composer require by-robots/twig-webpack-manifest
 ```
 
-Requirements
-------------
- - [PHP >= 5.3](http://php.net/releases/5_3_0.php)
- - [Twig 1.2+ or 2.x](https://twig.symfony.com)
+## Requirements
 
-Basic usage
------------
+- [PHP >= 5.3](http://php.net/releases/5_3_0.php)
+- [Twig 1.2+ or 2.x](https://twig.symfony.com)
+
+## Basic usage
+
+First, extend Twig:
 
 ```php
 $twig = new Twig_Environment($loader);
-$twig->addExtension(new \TDE\TwigWebpackManifestExtension\WebpackExtension(
+$twig->addExtension(new \ByRobots\TwigWebpackManifestExtension\WebpackExtension(
     __DIR__ . '/public/assets/manifest.json'
 ));
 ```
 
+Once Twig is entended, you can load files from the manifest file in your Twig
+templates like so:
+
 ```twig
-{# base.html.twig #}
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,11 +49,3 @@ $twig->addExtension(new \TDE\TwigWebpackManifestExtension\WebpackExtension(
     </body>
 </html>
 ```
-
-Maintainers
--------
- - Jordi Kroon | [Github](https://github.com/jordikroon) | [Twitter](https://twitter.com/jordi12100)
- - John van Hulsen | [Github](https://github.com/johnvanhulsen) | [Twitter](https://twitter.com/johnvanhulsen)
- 
-
-[TDE.nl](https://tde.nl) - We craft digital connections in sports

@@ -1,6 +1,6 @@
 <?php
 
-namespace TDE\TwigWebpackManifestExtension;
+namespace ByRobots\TwigWebpackManifestExtension;
 
 class WebpackExtension extends \Twig_Extension
 {

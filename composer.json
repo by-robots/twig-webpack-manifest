@@ -1,6 +1,6 @@
 {
-    "name": "tde/twig-webpack-manifest",
-    "description": "Injects CSS/JS in HTML templates, based on the generated Webpack manifest.json",
+    "name": "by-robots/twig-webpack-manifest",
+    "description": "Injects the correct CSS and JS files from a manifest file into a Twig template.",
     "type": "library",
     "license": "MIT",
     "require": {
@@ -8,7 +8,7 @@
     },
     "autoload": {
         "psr-4": {
-            "TDE\\TwigWebpackManifestExtension\\": "src/TDE/TwigWebpackManifestExtension/"
+            "ByRobots\\TwigWebpackManifestExtension\\": "src/"
         }
     }
 }
