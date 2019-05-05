@@ -38,7 +38,7 @@ abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
         $manifestContent = file_get_contents($this->manifestFile);
         if ($manifestContent === false) {
             throw new \Twig_Error_Loader(
-                'Manifest file can not be read.',
+                'Manifest file can not be read',
                 $token->getLine(),
                 $stream->getSourceContext()->getName()
             );
@@ -47,7 +47,7 @@ abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
         $manifest = json_decode($manifestContent, true);
         if (!isset($manifest[$entryFile])) {
             throw new \Twig_Error_Loader(
-                'Entry `' . $entryFile . '` does not exist in the manifest file.',
+                'Entry `' . $entryFile . '` does not exist in the manifest file',
                 $token->getLine(),
                 $stream->getSourceContext()->getName()
             );
@@ -57,24 +57,6 @@ abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
             $this->render($this->publicPrefix . $manifest[$entryFile]),
             $token->getLine()
         );
-    }
-
-    /**
-     * Build the path to the file entry. Prepends the path to the manifest file
-     * so that if the manifest file is at a remote domain then the entry file
-     * itself will be too.
-     *
-     * @param string $entry
-     *
-     * @return string
-     */
-    protected function entryUri($entry)
-    {
-        $path = explode('/', $this->manifestFile);
-        array_pop($path);
-        $path = implode('/', $path);
-
-        return "$path/$entry";
     }
 
     /**
