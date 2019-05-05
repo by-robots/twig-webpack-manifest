@@ -35,14 +35,19 @@ abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
         $entryFile = $stream->expect(\Twig_Token::STRING_TYPE)->getValue();
         $stream->expect(\Twig_Token::BLOCK_END_TYPE);
 
-        if (!file_exists($this->manifestFile)) {
-            throw new \Twig_Error_Loader('Webpack manifest file not exists.');
+        $manifestContent = file_get_contents($this->manifestFile);
+        if ($manifestContent === false) {
+            throw new \Twig_Error_Loader(
+                'Manifest file can not be read.',
+                $token->getLine(),
+                $stream->getSourceContext()->getName()
+            );
         }
 
-        $manifest = json_decode(file_get_contents($this->manifestFile), true);
+        $manifest = json_decode($manifestContent, true);
         if (!isset($manifest[$entryFile])) {
             throw new \Twig_Error_Loader(
-                'Webpack entry ' . $entryFile . ' does not exist in the manifest.json.',
+                'Entry `' . $entryFile . '` does not exist in the manifest file.',
                 $token->getLine(),
                 $stream->getSourceContext()->getName()
             );

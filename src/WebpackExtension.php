@@ -5,6 +5,8 @@ namespace ByRobots\TwigWebpackManifestExtension;
 class WebpackExtension extends \Twig_Extension
 {
     /**
+     * Location of the manifest file.
+     *
      * @var string
      */
     protected $manifestFile;
