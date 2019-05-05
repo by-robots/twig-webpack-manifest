@@ -12,35 +12,34 @@ class WebpackExtension extends \Twig_Extension
     protected $manifestFile;
 
     /**
-     * @var string
+     * Options dictating how to handle the Twig tag.
+     *
+     * @var array
      */
-    protected $publicJavascriptPrefix;
+    protected $options;
 
     /**
-     * @var string
-     */
-    protected $publicCssPrefix;
-
-    /**
+     * Engage!
+     *
      * @param string $manifestFile
-     * @param string $publicJavascriptPrefix
-     * @param string $publicCssPrefix
+     * @param array $options
      */
-    public function __construct($manifestFile, $publicJavascriptPrefix = '', $publicCssPrefix = '')
+    public function __construct(string $manifestFile, array $options = [])
     {
         $this->manifestFile = $manifestFile;
-        $this->publicJavascriptPrefix = $publicJavascriptPrefix;
-        $this->publicCssPrefix = $publicCssPrefix;
+        $this->options = $options;
     }
 
     /**
+     * Get the token parsers.
+     *
      * @return array
      */
-    public function getTokenParsers()
+    public function getTokenParsers(): array
     {
         return array(
-            new TokenParser\EntryTokenParserJs($this->manifestFile, $this->publicJavascriptPrefix),
-            new TokenParser\EntryTokenParserCss($this->manifestFile, $this->publicCssPrefix),
+            new TokenParser\EntryTokenParserJs($this->manifestFile, $this->options),
+            new TokenParser\EntryTokenParserCss($this->manifestFile, $this->options),
         );
     }
 }

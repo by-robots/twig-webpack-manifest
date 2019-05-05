@@ -17,7 +17,7 @@ composer require by-robots/twig-webpack-manifest
 
 ## Requirements
 
-- [PHP >= 5.3](http://php.net/releases/5_3_0.php)
+- [PHP >= 7.2](http://php.net/releases/7_2_0.php)
 - [Twig 1.2+ or 2.x](https://twig.symfony.com)
 
 ## Basic usage
