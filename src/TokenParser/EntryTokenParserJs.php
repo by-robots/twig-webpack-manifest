@@ -18,6 +18,6 @@ class EntryTokenParserJs extends AbstractWebpackTokenParser
      */
     protected function render($path)
     {
-        return '<script type="text/javascript" src="' . $path . '"></script>';
+        return '<script type="text/javascript" src="' . $this->entryUri($path) . '"></script>';
     }
 }

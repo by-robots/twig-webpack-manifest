@@ -18,6 +18,6 @@ class EntryTokenParserCss extends AbstractWebpackTokenParser
      */
     protected function render($path)
     {
-        return '<link type="text/css" href="' . $path . '" rel="stylesheet">';
+        return '<link type="text/css" href="' . $this->entryUri($path) . '" rel="stylesheet">';
     }
 }

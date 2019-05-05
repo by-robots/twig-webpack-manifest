@@ -60,6 +60,24 @@ abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
     }
 
     /**
+     * Build the path to the file entry. Prepends the path to the manifest file
+     * so that if the manifest file is at a remote domain then the entry file
+     * itself will be too.
+     *
+     * @param string $entry
+     *
+     * @return string
+     */
+    protected function entryUri($entry)
+    {
+        $path = explode('/', $this->manifestFile);
+        array_pop($path);
+        $path = implode('/', $path);
+
+        return "$path/$entry";
+    }
+
+    /**
      * @param string $entryPath
      * @return string
      */
