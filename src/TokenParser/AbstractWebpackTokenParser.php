@@ -46,6 +46,13 @@ abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
         // Get the manifest file's contents.
         $manifestContent = file_get_contents($this->manifestFile);
         if ($manifestContent === false) {
+            if (
+                !empty($this->options['missingResources'])
+                and $this->options['missingResources'] === 'nothing'
+            ) {
+                return new \Twig_Node_Text('', $token->getLine());
+            }
+
             throw new \Twig_Error_Loader(
                 'Manifest file can not be read',
                 $token->getLine(),
@@ -56,6 +63,13 @@ abstract class AbstractWebpackTokenParser extends \Twig_TokenParser
         // Get the entry from the manifest file.
         $manifest = json_decode($manifestContent, true);
         if (!isset($manifest[$entryFile])) {
+            if (
+                !empty($this->options['missingResources'])
+                and $this->options['missingResources'] === 'nothing'
+            ) {
+                return new \Twig_Node_Text('', $token->getLine());
+            }
+
             throw new \Twig_Error_Loader(
                 'Entry `' . $entryFile . '` does not exist in the manifest file',
                 $token->getLine(),

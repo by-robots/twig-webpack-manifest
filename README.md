@@ -27,7 +27,8 @@ First, extend Twig:
 ```php
 $twig = new Twig_Environment($loader);
 $twig->addExtension(new \ByRobots\TwigWebpackManifestExtension\WebpackExtension(
-    __DIR__ . '/public/assets/manifest.json'
+    __DIR__ . '/public/assets/manifest.json',
+    []
 ));
 ```
 
@@ -49,3 +50,24 @@ templates like so:
     </body>
 </html>
 ```
+
+## Options
+
+Options can be specified with an array of key => value pairs sent as the second
+argument to the `\ByRobots\TwigWebpackManifestExtension\WebpackExtension`
+constructor.
+
+Available options are as follows:
+
+- `missingResources` (_string_): How to handle a missing resource. When a file
+is not found the extension will handle it as either with an `exception`, or
+will do `nothing`. **Default:** `exception`.
+- `publicPath` (_string_): Will be prepended to the URL to the resource. For
+example, if the entry for `main.js` in the manifest file is `/foo/main.js` and
+`publicPath` has a value of `https://www.by-robots.dev` then the returned URL
+will be `https://by-robots.dev/foo/main.js`. **Default:** ``.
+
+## TODOs
+
+- [ ] Add unit tests.
+- [ ] Re-feactor options so option existence doesn't have to keep being checked.
